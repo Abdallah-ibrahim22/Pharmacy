@@ -1,0 +1,275 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>your care</title>
+</head>
+<body>
+
+    <!-- header -->
+    <header>
+
+        <h2 class="logo"><span class="special">YOUR</span> CARE</h2>
+
+        <nav >
+            <ul class="links">
+                <li class="link"><a href="#client">Client</a></li>
+                <li class="link"><a href="#company">Company</a></li>
+                <li class="link"><a href="#medicin">Medicin</a></li>
+                <li class="link"><a href="#bill">Bill</a></li>
+            </ul>
+        </nav>
+
+        <p class="clear"></p> <!-- clear float  -->
+
+    </header>
+
+    <!-- landpage -->
+    <main class="landpage">
+
+       
+        <div class="overlay"> 
+        <!-- text on landpage -->
+        <h2 class="landpage-title">Wellcome To Our Database Your Care Pharmacy System</h2>
+
+        <!-- pointer to each photo -->
+        <ul class="photo-pointer"> 
+            <li class="pointer active"></li>
+            <li class="pointer"></li>
+            <li class="pointer"></li>
+        </ul>
+        </div>
+    </main>
+
+    <!-- client -->
+    <section id="client" class="client section">
+
+        <!-- tilte of begin section -->
+        <div class="title">
+            <h2>Client</h2>
+
+            <!-- shape unter title -->
+            <div class="outline">
+                <span class="right-line"></span>
+                <span class="left-line"></span>
+            </div>
+        </div>
+
+        <!-- form client controls -->
+        <div class="control-form">
+        <div class="btns">
+            <button class="btn" onclick="inputHandel('client', 'add-client-form');">Create a New Client</button>
+            <button class="btn" >Show Bills</button>
+            <!-- <button class="btn" onclick="inputHandel('client', 'cancel-bill-form');">Cancel a Bill</button> -->
+        </div>
+
+        <div class="result-show">
+            <p class="intial-para">Please, Select Suitable Button in Certain Section You need!</p>
+            <!-- add client -->
+            <form class="add-client-form input-from hide" method="post" name="add-client-form"> 
+                <input type="number"   placeholder="Client id" class="name-client input" name='client_id' required>
+                <input type="text"   placeholder="Client Name" class="name-client input" minlength="2" maxlength="30" required name="client_name">
+                <input type="tel"    placeholder="Client Telephone" class="telephone-client input" required name="client_phone">
+                <input type="text"    placeholder="Client Address" class="telephone-client input" maxlength="30" required name="client_address">
+                <br>
+                <input type="submit" placeholder="Send" class="btn">
+                <br>
+                <input type="reset"  placeholder="Cancel" class="btn">
+            </form>
+
+            <!--cancel  -->
+            <form class="cancel-bill-form input-from hide" method="post" name="cancel-bill-form"> 
+                <input type="number"   placeholder="Id Bill" class="id-bill input" required>
+                <br>
+                <input type="submit" placeholder="Send" class="btn">
+                <br>
+                <input type="reset"  placeholder="Cancel" class="btn">
+            </form>
+        </div>
+
+        </div>
+        
+    </section>
+
+    <!-- store -->
+    <section id="company" class="company section">
+        <!-- title of begin section -->
+        <div class="title">
+            <h2>Store</h2>
+
+             <!-- shape under title -->
+            <div class="outline">
+                <span class="right-line"></span>
+                <span class="left-line"></span>
+            </div>
+        </div>
+
+        <!-- fron control to company -->
+        <div class="control-form">
+            <div class="btns">
+                <button class="btn" onclick="inputHandel('company', 'add-company-form');">Add New Store</button>
+                <button class="btn">Show Stores</button>
+                <!-- <button class="btn">Buy Medicin</button> -->
+            </div>
+
+            <div class="result-show">
+                <p class="intial-para">
+                    Please, Select Suitable Button in Certain Section You need! 
+                </p>
+
+                <!-- new company -->
+                <form class="add-company-form input-from hide" method="post" name="add-company-form"> 
+                    <input type="number"   placeholder="Company id" class="name-company input" required name="store_id">
+                    <input type="text"   placeholder="Company Name" class="name-company input" minlength="2" maxlength="30" required name="store_name">
+                    <input type="text"   name="store_number"  placeholder="Company Telephone" class="telephone-company input" required>
+                    <br>
+                    <input type="submit" placeholder="Send" class="btn">
+                    <br>
+                    <input type="reset"  placeholder="Cancel" class="btn">
+                </form>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- medicin -->
+    <section id="medicin" class="medicin section">
+         <!-- title of begin section -->
+        <div class="title">
+            <h2>Medicin</h2>
+
+            <!-- shape under title -->
+            <div class="outline">
+                <span class="right-line"></span>
+                <span class="left-line"></span>
+            </div>
+        </div>
+
+        <!-- fron control to medicine -->
+        <div class="control-form">
+            <div class="btns">
+                <button class="btn" onclick="addMedicin();">Add new Medicin</button>
+                <button class="btn">Show All Medicin</button>
+                <!-- <button class="btn" onclick="onaddMedicin();">Show one Medicin Details</button> -->
+            </div>
+
+            <div class="result-show">
+                <p class="intial-para">
+                    Please, Select Suitable Button in Certain Section You need! 
+                </p>
+                      <!--add medicine  -->
+                    <form class="add-medicin-form input-from hide" method="post" name="add-medicin-form"> 
+                        <input type="text"   placeholder="Medicin id" class="name-medicin input" name="medicine_id" required>
+                        <input type="text"   placeholder="Medicin Name" class="name-medicin input" name="medicine_name" minlength="2" maxlength="30" required>
+                        <input type="text"   placeholder="Medicin Type" class="type-medicin input" name="medicine_type" maxlength="20" required>
+                        <input type="number" placeholder="Medicin Sell Price" class="sell-price-medicin input" name="medicine_sell_price" min="0" required >
+                        <input type="number" placeholder="Medicin Buy Price" class="buy-price-medicin input"  name="medicine_buy_price"  min="0" required> 
+                        <input type="number" placeholder="Medicin Amount" class="amount-medicin input"  name="medicine_amount"  min="0" required>
+                        <input type="date"   placeholder="Medicin Expire Date" class="exp-medicin input" name="medicine_expdate" required>
+                        <input type="number"   placeholder="store id" class="exp-medicin input" required name="medicine_store_id">
+                        <br>
+                        <input type="submit" placeholder="Send" class="btn">
+                        <br>
+                        <input type="reset"  placeholder="Cancel" class="btn">
+                    
+                    </form>
+
+                      <!-- one medicin -->
+                    <form class="one-medicin-form input-from hide" method="post" name="one-medicin-form"> 
+                        <input type="text"   placeholder="Medicin Name" class="name-medicin input" minlength="2" maxlength="30" required>
+                        <input type="text"   placeholder="Medicin Type" class="type-medicin input" maxlength="20" required>
+                        <br>
+                        <input type="submit" placeholder="Send" class="btn">
+                        <br>
+                        <input type="reset"  placeholder="Cancel" class="btn">
+                        
+                    </form>
+  
+            </div>
+        </div>
+    </section>
+
+    <!-- bill -->
+    <section id="bill" class="bill section">
+        <!-- title of begin section -->
+        <div class="title">
+            <h2>bill</h2>
+
+             <!-- shape under title -->
+            <div class="outline">
+                <span class="right-line"></span>
+                <span class="left-line"></span>
+            </div>
+        </div>
+
+        <!-- fron control to bill -->
+        <div class="control-form">
+            <div class="btns">
+                <!-- <button class="btn">Show All Client Order</button>
+                <button class="btn">Show All Campany Order</button> -->
+                <button class="btn" onclick="inputHandel('bill', 'one-bill-form');">Create New bill</button>
+                <button class="btn">Show Bills</button>
+            </div>
+            
+            <div class="result-show">
+                <p class="intial-para">
+                    Please, Select Suitable Button in Certain Section You need! 
+                </p>
+                <!--one  bill-form  -->
+                  <form class="one-bill-form input-from hide" method="post" name="one-bill-form"> 
+                    
+                    <input type="number"  placeholder="Bill Id" class="bill-id input" min="0" required name="bill_id">
+                    <input type="date"  placeholder="Bill date" class="bill-id input" min="0" required name="bill_date">
+                    <input type="date"  placeholder="Bill state" class="bill-id input" min="0" max="1" required name="bill_state">
+                    <input type="number"  placeholder="Client id" class="Client-Name input" maxlength="30" name="bill_client_id">
+                    <br>
+                    <input type="submit" placeholder="Send" class="btn">
+                    <br>
+                    <input type="reset"  placeholder="Cancel" class="btn">
+                
+                  </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="section">
+
+        <div class="branches">
+            <iframe src="" frameborder="0"></iframe>
+
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+        <div class="copyright">
+            <p>copyright &copy; saved by</p>
+
+            <ul class="names">
+                <li><span class="special">Team Leader</span>Abd El Rahman Azzam</li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        const photos = [
+            "{% static 'asserts/landpage-2.jpg' %}",
+            "{% static 'asserts/landpage-3.jpg' %}",
+            "{% static 'asserts/landpage-1.jpg' %}",
+        ];
+    </script>
+    <script src="{% static 'js/dynamic.js' %}"></script>
+</body>
+</html>

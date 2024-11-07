@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Simple UI</title>
+    <style>
+    body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 10px;
+    }
+    
+    header {
+        background-color: #f0f0f0;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    main {
+        display: flex; /* Example of flexbox layout */
+        flex-direction: column;
+        align-items: center;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My UI</h1>
+    
+        <button><a href="{% url "client" %}">Clients</a></button>
+        <br>
+        <h2>clients</h2>
+        <br>
+        <!-- clients -->
+        <ul>
+            {% for row in clients_rows %}
+            <li>{{row}}</li>
+            {% endfor %}
+        </ul>
+        <form action="" method="post" name="client_form">
+            {% csrf_token %}
+            <input type="number" placeholder="client_id"  name="client_id">
+            <input type="text" placeholder="client_name"  name="client_name">
+            <input type="text" placeholder="phone" name="client_phone">
+            <input type="text" placeholder="address"  name="client_address">
+            <input type="submit">
+        </form>
+
+        <!-- bills -->
+        <br>
+        <h2>bills</h2>
+        <br>
+        <ul>
+            {% for row in bills_rows %}
+            <li>{{row}}</li>
+            {% endfor %}
+        </ul>
+        <form action="" method="post" name="bill_form">
+            {% csrf_token %}
+            <input type="number" placeholder="bill_id"  name="bill_id">
+            <input type="date" placeholder="bill_date"  name="bill_date">
+            <input type="text" placeholder="bill_state" name="bill_state">
+            <input type="number" placeholder="client_id"  name="bill_client_id">
+            <input type="submit">
+        </form>
+
+        <!-- medicine -->
+        <br>
+        <h2>medicines</h2>
+        <br>
+        <ul>
+            {% for row in medicines_rows %}
+            <li>{{row}}</li>
+            {% endfor %}
+        </ul>
+        <form action="" method="post" name="medicine_form">
+            {% csrf_token %}
+            <input type="number" placeholder="medicine_id"  name="medicine_id">
+            <input type="text" placeholder="medicine_name"  name="medicine_name">
+            <input type="text" placeholder="medicine_type"  name="medicine_type">
+            <input type="number" placeholder="amount" name="medicine_amount">
+            <input type="date" placeholder="expdate"  name="medicine_expdate">
+            <input type="number" placeholder="sell_price"  name="medicine_sell_price">
+            <input type="number" placeholder="buy_price"  name="medicine_buy_price">
+            <input type="number" placeholder="store_id"  name="medicine_store_id">
+            <input type="submit">
+        </form>
+
+
+        <!-- store -->
+        <br>
+        <h2>stores</h2>
+        <br>
+        <ul>
+            {% for row in stores_rows %}
+            <li>{{row}}</li>
+            {% endfor %}
+        </ul>
+        <form action="" method="post" name="store">
+            {% csrf_token %}
+            <input type="number" placeholder="store_id"  name="store_id">
+            <input type="text" placeholder="store_name"  name="store_name">
+            <input type="text" placeholder="phone_number"  name="store_number">
+            <input type="submit">
+        </form>
+
+
+        <!-- medicine_bill -->
+        <br>
+        <h2>medicine_bills</h2>
+        <br>
+        <ul>
+            {% for row in medicine_bills_rows %}
+            <li>{{row}}</li>
+            {% endfor %}
+        </ul>
+        <form action="" method="post" name="medicine_bill">
+            {% csrf_token %}
+            <input type="number" placeholder="medicine_id"  name="medicine_bill_medicine_id">
+            <input type="number" placeholder="bill_id"  name="medicine_bill_bill_id">
+            <input type="number" placeholder="amount"  name="medicine_bill_amount">
+            <input type="submit">
+        </form>
+
+    </header>
+    <main>
+        </main>
+</body>
+</html>
